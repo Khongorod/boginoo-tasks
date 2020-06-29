@@ -142,3 +142,12 @@
     Жишээ нь:
         className='fs-16 lh-20'
 */
+
+@for $i from 12 to 80 {
+    .fs-#{$i}{
+        font-size: $i + px;
+    }
+    .lh-#{$i}{
+        font-size: $i + px;
+    }
+}
