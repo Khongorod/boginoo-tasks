@@ -121,10 +121,15 @@
 
 .font-lobster {
     font-family: Lobster;
+    text-align: center;
+    font-size: 56px !important;
+    line-height: 70px;
 }
 
 .font-ubuntu {
     font-family: Ubuntu;
+    display: flex;
+    margin-top: 20px;
 }
 
 .normal {
