@@ -126,10 +126,29 @@
     line-height: 70px;
 }
 
+.font-nolobster {
+    margin-top: -45px !important;
+    font-family: Lobster;
+    text-align: center;
+    font-size: 56px !important;
+    line-height: 70px;
+}
+
 .font-ubuntu {
     font-family: Ubuntu;
-    display: flex;
-    margin-top: 20px;
+    // text-align: center;
+}
+
+.font-noubuntu {
+    font-family: Ubuntu;
+    text-align: center;
+    font-weight: 800;
+}
+
+.nevtreh{
+font-family: Ubuntu;
+font-size: 20px;
+opacity: 0.2;
 }
 
 .normal {
@@ -153,6 +172,16 @@
         font-size: $i + px;
     }
     .lh-#{$i}{
-        font-size: $i + px;
+        line-height: $i + px;
     }
+}
+.checkbox{
+    width: 15px;
+height: 15px;
+left: 530px;
+top: 629px;
+background: #FFFFFF;
+border: 1px solid #02B589;
+box-sizing: border-box;
+border-radius: 4px;
 }

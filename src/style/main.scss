@@ -27,7 +27,7 @@
     }
 }
 
-@for $i from 1 through 10 {
+@for $i from 1 through 100 {
     .h-#{$i} {
         height: pow(2, $i) + px;
     }
@@ -52,6 +52,9 @@
     }
     .mr-#{$i} {
         margin-right: pow(2, $i) + px;
+    }
+    .mar-#{$i} {
+        margin-right: 170 + px;
     }
 }
 

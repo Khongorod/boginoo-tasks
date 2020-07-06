@@ -4,9 +4,10 @@ import {
     BrowserRouter as Router,
     Switch,
     Route,
-    Link
+    // Link
 } from "react-router-dom";
 import './style/main.scss';
+import { ResetPass } from './pages/resetpass';
 
 const App = () => {
     return (
@@ -17,6 +18,9 @@ const App = () => {
                 </Route>
                 <Route path="/login" exact>
                     <LogIn />
+                </Route>
+                <Route path="/resetpass" exact>
+                    <ResetPass/>
                 </Route>
             </Switch>
         </Router>
