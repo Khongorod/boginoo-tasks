@@ -8,8 +8,10 @@ import {
 } from "react-router-dom";
 import './style/main.scss';
 import { ResetPass } from './pages/resetpass';
+import {SignUp} from './pages/signUp';
 
 const App = () => {
+
     return (
         <Router>
             <Switch>
@@ -21,6 +23,9 @@ const App = () => {
                 </Route>
                 <Route path="/resetpass" exact>
                     <ResetPass/>
+                </Route>
+                <Route path="/signUp" exact>
+                    <SignUp/>
                 </Route>
             </Switch>
         </Router>

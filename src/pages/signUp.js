@@ -2,18 +2,15 @@ import React from 'react';
 import { Layout, Button, Input, IconDash, IconEndBracket, IconStartBracket } from '../components/';
 import { useHistory } from 'react-router-dom';
 
-export const LogIn = () => {
+export const SignUp = () => {
 
     const history = useHistory();
 
     const toReset = () => {
         history.push('/resetpass')
     }
-    const toSignUp = () => {
-        history.push('/signUp')
-    }
 
-    // const [state, setState] = useState({ email: '', password: '' });
+    // const [state, setState] = useState({ email: '', password: '', name: '' });
     // const [user, seyUser] = useState(null);
 
     // const effect = useEffect(config);
@@ -23,8 +20,10 @@ export const LogIn = () => {
     // }, [])
 
     // const signUp = async () => {
-    //     console.log(state);
-    //     await firebase.auth().createUserWithEmailAndPassword(state.email, state.password);
+    //     console.log(state.email, state.password, state.name);
+    //     let uid = await firebase.auth().createUserWithEmailAndPassword(state.email, state.password, state.name)
+    //         .then((auth) => auth.user.uid);
+    //     console.log('signed up!');
     // }
 
     return (
@@ -41,6 +40,11 @@ export const LogIn = () => {
 
                 <div className='font-noubuntu c-primary fs-20 lh-23 mt-4'>Нэвтрэх</div>
                 <div className="mt-4">
+                    <div className='font-ubuntu fs-12 lh-18 ph-4'>Нэр</div>
+                    <Input className='nevtreh input w-8 h-5 mt-3' placeholder="not john" />
+                    {/* value={state.name} onChange={(e) => setState({...state, name: e.target.value})} */}
+                </div>
+                <div className="mt-4">
                     <div className='font-ubuntu fs-12 lh-18 ph-4'>Цахим хаяг</div>
                     <Input className='nevtreh input w-8 h-5 mt-3' placeholder="name@mail.domain" />
                     {/* value={state.email} onChange={(e) => setState({...state, email: e.target.value})} */}
@@ -55,7 +59,7 @@ export const LogIn = () => {
                     <div className='front-ubuntu fs-12 underline' onClick={toReset}>Нууц үгээ мартсан</div>
                 </div>
                 <Button className='font-ubuntu fs-20 lh-23 bold c-default h-5 w-8 mt-4 b-primary'>Нэвтрэх</Button>
-                <div className='front-ubuntu fs-12 mt-4 c-primary underline' onClick={toSignUp}>Шинэ хэрэглэгч бол энд дарна уу?</div>
+                <div className='front-ubuntu fs-12 mt-4 c-primary underline'>Шинэ хэрэглэгч бол энд дарна уу?</div>
             </div>
         </Layout>
     )

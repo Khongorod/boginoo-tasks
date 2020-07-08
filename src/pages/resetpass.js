@@ -1,5 +1,5 @@
 import React from 'react';
-import { Layout, Button, Input, IconDash, IconEndBracket, IconStartBracket } from '../components/';
+import { Layout, IconDash, IconEndBracket, IconStartBracket } from '../components/';
 
 export const ResetPass = () => {
 
