@@ -1,10 +1,13 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Layout, Button, Input, IconDash, IconEndBracket, IconStartBracket } from '../components/';
 import { useHistory } from 'react-router-dom';
+import { auth } from '../firebase'
 
 export const LogIn = () => {
 
     const history = useHistory();
+
+    const [state, setState] = useState({ email: '', password: '' });
 
     const toReset = () => {
         history.push('/resetpass')
@@ -13,19 +16,24 @@ export const LogIn = () => {
         history.push('/signUp')
     }
 
-    // const [state, setState] = useState({ email: '', password: '' });
-    // const [user, seyUser] = useState(null);
-
-    // const effect = useEffect(config);
-
-    // useEffect(() => {
-    //     firebase.initializeApp();
-    // }, [])
-
-    // const signUp = async () => {
-    //     console.log(state);
-    //     await firebase.auth().createUserWithEmailAndPassword(state.email, state.password);
-    // }
+    const loginUser = () => {
+        const email = state.email
+        const password = state.password
+        auth.signInWithEmailAndPassword(email, password)
+            .then(() => { alert('logged in !') })
+            .catch((error) => {
+                const err = (error.code).split('/')[1];
+                if(err === 'invalid-email') {
+                    alert('email ee zuv bich')
+                }
+                if(err === 'wrong-password') {
+                    alert('pass chn buruu bn')
+                }
+                if(err === 'user-not-found') {
+                    alert('burtguul hugshuun')
+                }
+            })
+    }
 
     return (
         <Layout>
@@ -42,19 +50,20 @@ export const LogIn = () => {
                 <div className='font-noubuntu c-primary fs-20 lh-23 mt-4'>Нэвтрэх</div>
                 <div className="mt-4">
                     <div className='font-ubuntu fs-12 lh-18 ph-4'>Цахим хаяг</div>
-                    <Input className='nevtreh input w-8 h-5 mt-3' placeholder="name@mail.domain" />
-                    {/* value={state.email} onChange={(e) => setState({...state, email: e.target.value})} */}
+                    <Input className='nevtreh input w-8 h-5 mt-3' placeholder="name@mail.domain"
+                        onChange={(e) => setState({ ...state, email: e.target.value })} />
                 </div>
                 <div className="mt-4">
                     <div className='font-ubuntu fs-12 lh-18 ph-4'>Нууц үг</div>
-                    <Input className='nevtreh input w-8 h-5 mt-3' placeholder='......' type='password' />
+                    <Input className='nevtreh input w-8 h-5 mt-3' placeholder='......' type='password'
+                        onChange={(e) => setState({ ...state, password: e.target.value })} />
                 </div>
                 <div className='w-8 flex justify-between mt-4'>
                     {/* <div className='checkbox'></div> */}
                     <div className='front-ubuntu fs-12 c-primary '>Намайг сана</div>
                     <div className='front-ubuntu fs-12 underline' onClick={toReset}>Нууц үгээ мартсан</div>
                 </div>
-                <Button className='font-ubuntu fs-20 lh-23 bold c-default h-5 w-8 mt-4 b-primary'>Нэвтрэх</Button>
+                <Button className='font-ubuntu fs-20 lh-23 bold c-default h-5 w-8 mt-4 b-primary' onClick={() => loginUser()}>Нэвтрэх</Button>
                 <div className='front-ubuntu fs-12 mt-4 c-primary underline' onClick={toSignUp}>Шинэ хэрэглэгч бол энд дарна уу?</div>
             </div>
         </Layout>

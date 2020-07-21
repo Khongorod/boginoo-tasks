@@ -8,6 +8,7 @@ export const ResetPass = () => {
         <Layout>
             <div className='h100 flex flex-col items-center'>
                 <div className='flex justify-center items-center mt-5'>
+
                     <IconStartBracket />
                     <IconDash />
                     <IconEndBracket />
@@ -15,6 +16,7 @@ export const ResetPass = () => {
                 <div className='font-nolobster c-primary fs-2 lh-70 mt-1'>
                     Boginoo
                 </div>
+                <div className='font-noubuntu c-primary fs-20 lh-23 mt-4'>Нэвтрэх</div>
                 {/* <Button className='font-ubuntu fs-20 lh-23 bold c-default h-5 w-8 mt-4 b-primary'>Илгээх</Button> */}
             </div>
         </Layout>
