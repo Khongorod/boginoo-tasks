@@ -11,6 +11,7 @@ import { ResetPass } from './pages/resetpass';
 import { SignUp } from './pages/signUp';
 import './firebase'
 import { ContextProvider } from './context/userContext'
+import { History } from './pages/history'
 
 const App = () => {
 
@@ -29,6 +30,9 @@ const App = () => {
                     </Route>
                     <Route path="/signUp" exact>
                         <SignUp />
+                    </Route>
+                    <Route path="/history" exact>
+                        <History />
                     </Route>
                 </Switch>
             </ContextProvider>
