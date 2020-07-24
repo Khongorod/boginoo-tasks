@@ -1,33 +1,45 @@
 import React, { createContext } from 'react'
-import { auth, db } from '../firebase'
 import { useEffect } from 'react';
 import { useState } from 'react';
+import { useFirebase } from '../firebase';
 
 
 export const userContext = createContext({});
 
 export const ContextProvider = ({ children }) => {
-    const [user, setUser] = useState({
-        name: '',
-        history: []
+    const [state, setState] = useState({
+        user: null,
+        name: ''
     })
-    useEffect(() => {
-        auth.onAuthStateChanged(function (user) {
-            if (user) {
-                db.collection('users').doc(user.user.uid).onSnapshot((res) => {
-                    console.log(res)
-                    setUser({
 
-                    })
-                })
-            } else {
-                alert('user not logged in')
-            }
-        });
-    }, [auth])
+    console.log(state);
+    const {auth, db} = useFirebase();
+    useEffect(() => {
+        if (auth) {
+            const unsubscribe = auth.onAuthStateChanged(function (user) {
+                if (user) {
+                    setState({user, name: ''});
+                } else {
+                    alert('user not logged in')
+                }
+            });
+            return () => unsubscribe();
+        }   
+    }, [auth]);
+
+    useEffect(() => {
+        if (db && state.user) {
+            const unsubscribe = db.collection('users').doc(state.user.uid).onSnapshot((doc) => {
+                if (doc.exists){
+                    setState({...state, name: doc.data().name});
+                }
+            })
+            return () => unsubscribe();
+        }
+    }, [db, state.user])
 
     return (
-        <userContext.Provider value={{}}>
+        <userContext.Provider value={state}>
             {children}
         </userContext.Provider>
     )

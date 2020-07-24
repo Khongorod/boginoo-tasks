@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import { Layout, Button, Input, IconDash, IconEndBracket, IconStartBracket } from '../components/';
 import { useHistory } from 'react-router-dom';
-import { auth } from '../firebase'
+import { useFirebase } from '../firebase';
 
 export const LogIn = () => {
-
+    const {auth} = useFirebase();
     const history = useHistory();
 
     const [state, setState] = useState({ email: '', password: '' });
@@ -24,13 +24,13 @@ export const LogIn = () => {
             .catch((error) => {
                 const err = (error.code).split('/')[1];
                 if(err === 'invalid-email') {
-                    alert('email ee zuv bich')
+                    alert('email bichsen esehee shalgana uu :)')
                 }
                 if(err === 'wrong-password') {
-                    alert('pass chn buruu bn')
+                    alert('wrong password')
                 }
                 if(err === 'user-not-found') {
-                    alert('burtguul hugshuun')
+                    alert('u need to sign UP')
                 }
             })
     }

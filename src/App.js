@@ -1,5 +1,5 @@
 import React from 'react';
-import { HomeDefault, LogIn } from './pages';
+import { HomeDefault, LogIn, Shortener } from './pages';
 import {
     BrowserRouter as Router,
     Switch,
@@ -9,7 +9,6 @@ import {
 import './style/main.scss';
 import { ResetPass } from './pages/resetpass';
 import { SignUp } from './pages/signUp';
-import './firebase'
 import { ContextProvider } from './context/userContext'
 import { History } from './pages/history'
 
@@ -33,6 +32,9 @@ const App = () => {
                     </Route>
                     <Route path="/history" exact>
                         <History />
+                    </Route>
+                    <Route path="*">
+                        <Shortener />
                     </Route>
                 </Switch>
             </ContextProvider>
