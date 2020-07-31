@@ -12,7 +12,7 @@ export const ContextProvider = ({ children }) => {
         name: ''
     })
 
-    console.log(state);
+    // console.log(state);
     const {auth, db} = useFirebase();
     useEffect(() => {
         if (auth) {
