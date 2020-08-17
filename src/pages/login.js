@@ -12,7 +12,7 @@ export const LogIn = () => {
     const toReset = () => {
         history.push('/resetpass')
     }
-    const toSignUp = () => {
+    const toSignUp = () => {    
         history.push('/signUp')
     }
 
